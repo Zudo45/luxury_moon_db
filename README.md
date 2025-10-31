@@ -29,3 +29,11 @@ tree
 
 ```bash
 docker-compose up -d
+
+## Autores y participación
+
+- Darli Medina Sixce (100%)
+- Ventura Florian Steffano (100%)
+- Castillo Aranda Jhrodan (50%)
+- Flores Rodriguez Diego (100%)
+- Velasquez Vergara Angel (50%)

@@ -1,0 +1,31 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: luxury_moon_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: LuxuryMoon2025!Root
+      MYSQL_DATABASE: luxury_moon_db
+      MYSQL_USER: luxury_admin
+      MYSQL_PASSWORD: Luxury@2025Pass
+      TZ: America/Lima
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./docker/init/00_master_init.sql:/docker-entrypoint-initdb.d/00_master_init.sql:ro
+      - ./sql:/docker-entrypoint-initdb.d/sql:ro
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d:ro
+      - mysql_data:/var/lib/mysql
+      - mysql_logs:/var/log/mysql
+    networks:
+      - luxury_moon_network
+
+volumes:
+  mysql_data:
+    driver: local
+  mysql_logs:
+    driver: local
+
+networks:
+  luxury_moon_network:
+    driver: bridge
